@@ -5,7 +5,14 @@ import * as THREE from 'three';
 
 //1 - Crear una Escena
 const escena = new THREE.Scene();
-escena.background = new THREE.Color(0x2a3b4c) //agregando color de fonodo
+escena.background = new THREE.Color("skyblue") //agregando color de fonodo
+escena.fog = new THREE.Fog(0x76456c, 0.1, 8) //efecto de sombra
+
+//cargaremos imagen
+    const carga = new THREE.TextureLoader()
+    carga.load('./img/custom-sky.png',(textura)=>{
+        escena.background = textura
+    })
 
 //2 Agregar la camara
 const camara = new THREE.PerspectiveCamera(
@@ -23,7 +30,7 @@ document.body.appendChild(renderer.domElement)//Agregando render al documento HT
 // 5-1 Agregando geometria
 const geometria = new THREE.BoxGeometry();
 // 5-2 Material
-const material =  new THREE.MeshBasicMaterial({color: 0x00f000, wireframe:true});
+const material =  new THREE.MeshBasicMaterial({color: 0x00f000});
 // 5 Mesh esta compuesto por una geometria y un material
 const cubo = new THREE.Mesh(geometria,material)
 
