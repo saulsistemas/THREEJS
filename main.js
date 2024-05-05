@@ -59,6 +59,14 @@ controles.screenSpacePanning = true;
 // 4 Agregar la Escena y la camara al render.
 //renderer.render(escena,camara)
 
+const redimencionar = () =>{
+    camara.aspect =window.innerWidth / window.innerHeight;
+    camara.updateProjectionMatrix()
+    renderer.setSize(window.innerWidth , window.innerHeight)
+    renderer.render(escena, camara)
+}
+window.addEventListener("resize",redimencionar)
+
 //7 crear anumacion
 const animacion = () => {
     //Bucle para que se repita la animacion
